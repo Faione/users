@@ -10,6 +10,9 @@ import (
 
 type UserFilter func(user *user.User) bool
 
+// 读取 `/etc/passwd` 文件，获得所有用户的信息
+//
+// 可以通过设置 UserFilter 来对用户进行过滤
 func ListAll(filters ...UserFilter) ([]*user.User, error) {
 	file, err := os.Open("/etc/passwd")
 	if err != nil {

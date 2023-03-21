@@ -13,6 +13,7 @@ type LoggedUser struct {
 	LoginTime string
 }
 
+// 读取 `/var/run/utmp` 文件，获得登陆用户的信息
 func ListLogged() ([]*LoggedUser, error) {
 	fp := C.cgo_utmp_open()
 	if fp == nil {
